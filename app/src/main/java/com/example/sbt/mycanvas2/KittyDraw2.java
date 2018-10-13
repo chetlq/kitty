@@ -41,7 +41,7 @@ public class KittyDraw2 extends View {
        // float dp2 = this.getResources().getDimension(R.dimen.name1);
         DisplayMetrics metrics = this.getResources().getDisplayMetrics();
         float k = (float) (metrics.widthPixels/1080.0);
-        paint.setStrokeWidth((int)(40*k));
+        paint.setStrokeWidth((int)(20*k));
 //        rect.set(
 //                this.getResources().getDimension(R.dimen.x1),
 //                this.getResources().getDimension(R.dimen.y1),
@@ -57,5 +57,25 @@ public class KittyDraw2 extends View {
         );
 
         canvas.drawRect(rect, paint);
+
+        paint.setColor(Color.RED);
+        rect.set(
+                convertDpToPixel(10),
+                convertDpToPixel(10),
+                convertDpToPixel(300),
+                convertDpToPixel(300)
+        );
+
+        canvas.drawRect(rect, paint);
     }
+
+
+    private float convertDpToPixel(int dp){
+        Resources resources = this.getResources();
+        DisplayMetrics metrics = resources.getDisplayMetrics();
+        float px = dp * (metrics.densityDpi / 160.0f);
+        return  px;
+    }
+
+
 }
